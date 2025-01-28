@@ -1,0 +1,21 @@
+
+#open a new window
+ctrl + n
+
+#open a new window in incognito mode 
+ctrl + shift + n
+
+#open a new tab and jump to it
+ctrl + t
+
+#reopen previously close tabs in the order they were close
+ctrl + shift + t
+
+#Jump to the next open tab
+	Ctrl + Tab or Ctrl + PgDn
+
+Jump to the previous open tab
+Ctrl + Shift + Tab or Ctrl + PgUp
+
+#close tthe current tab
+ctrl + w

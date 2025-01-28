@@ -1,0 +1,10 @@
+#devfs
+sysf- contine failuri ce au informatii despre device-uri ,daca sunt pornite sau nu,ce modele ,cit timp functioneaza si tot asa deci sysf este ceea ce vedem iar devfs ce este intru
+#afiseaza informatii despre carda de retea
+ls /sys/class/net/ 
+ip addr
+
+procfs afiseaza ierarhia tutor proceselor in sistem
+# afiseaza infromatii depsre procesor
+ls /proc
+cat cpuinfo
