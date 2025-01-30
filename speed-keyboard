@@ -2,4 +2,60 @@
 CTRL + ;
 # spped move in left window
 CTRL + j
+#change all fields to new fields in all file
+%s/search_string/new_string/g
+#move to the left
+h
+#move to the right 
+l
+#move to the top 
+k
+#move to the bottom
+j
+
+#move to the next word
+w
+
+#move to the previous word
+b
+
+#move to the start of the live 
+0
+
+#move the end of the line 
+$
+
+#insert mode
+i
+#insert mode at the end of the line
+A
+#insert line to the end of the line
+o
+#insert line to the start of the line
+O
+#delete the current line
+dd
+#delete the current word 
+dw
+#move to the first line
+gg
+
+#move to the last line
+G
+
+#move for number of line
+number + G
+
+#search for a word
+/word
+
+#search previous word
+?word
+
+#next search word
+n
+
+#previous search word
+N
+
 

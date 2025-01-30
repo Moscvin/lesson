@@ -8,3 +8,7 @@ procfs afiseaza ierarhia tutor proceselor in sistem
 # afiseaza infromatii depsre procesor
 ls /proc
 cat cpuinfo
+
+#afiseaza infromatii despre module
+lsmod
+
