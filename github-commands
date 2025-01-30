@@ -1,0 +1,39 @@
+#initialized empty git repository
+git init
+
+#status of git(write about commit or conflicts)
+git status
+
+#delete all files from commit
+gir rm --cached -r.
+
+#adding all files in commit 
+git add .
+
+#commit with message TEST
+git commit -m "TEST"
+
+#information about branch
+git branch
+
+# create a new branch with name test 
+git branch test
+
+#deleted branch with name test
+git branch -D test
+
+#change branch to test
+git checkout test
+
+#change and create new branch with name test
+git checkout -b test
+
+#put or update all files from name_branch
+git merge name_branch
+
+#update remote refs along with associated objects
+git push 
+
+#fetch from and integrate wit another repositoryor a local branch
+git pull
+
