@@ -58,4 +58,6 @@ n
 #previous search word
 N
 
+#auto complete with copilot
+CTRL + l
 

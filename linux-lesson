@@ -12,3 +12,6 @@ cat cpuinfo
 #afiseaza infromatii despre module
 lsmod
 
+# afiseaza infromatii despre toate procesele pronite
+pstree
+

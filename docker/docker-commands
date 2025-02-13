@@ -1,0 +1,12 @@
+#to show all cotainers
+docker ps -a
+# to show list with all images
+docker images
+#to stopped all cotainers 
+docker stop $(docker ps -q)
+#for run one container 
+docker run [name_container]
+#a sterge toate cotainerele care sunt oprite
+docker container prune
+
+014
