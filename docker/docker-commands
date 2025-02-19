@@ -1,12 +1,56 @@
 #to show all cotainers
 docker ps -a
+
 # to show list with all images
 docker images
+
 #to stopped all cotainers 
 docker stop $(docker ps -q)
+
 #for run one container 
 docker run [name_container]
+
 #a sterge toate cotainerele care sunt oprite
 docker container prune
 
-014
+#to remove all images
+docker rmi $(docker images -q)
+
+#information about container
+docker inspect [name_container] or [id_container]
+
+#de a porini un proces intauntru la un alt cotainer pornit
+docker exec -it [name_container] /bin/bash
+
+#de a folosi numele care eu doresc la un cotainer
+docker run --name [name_container] [name_image]
+
+#pentru a porni dockerul local
+sudo systemctl start docker
+
+#pentru a porni dockerul pe portul care doresc
+docker run -p [port_local]:[port_docker] [name_image]
+
+#pentru a proni containerul dinamic
+docker run -d [name_image] 
+
+#pentru a vedea logurile unui containerul
+docker logs [name_container]
+
+#pentru a vedea logurile unui containerul in timp real
+docker logs -f [name_container]
+
+# a porni in modul interactiv
+docker run -d -p 8080:80 --name my-apache-app -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
+
+# a modifica un fisier html si de a afisa in container nginx
+docker run -v ${PWD}:/home/vlad/Documents/lesson/docker/docker/nginx -p 8080:80 -d nginx
+
+#pentru a inspecta informatile unui container
+docker inspect [name_container]
+
+#de a consturi un container
+docker build -t [name_image] .
+
+#de a porni un container
+docker run -d -p 8080:80 [name_image]
