@@ -54,3 +54,6 @@ docker build -t [name_image] .
 
 #de a porni un container
 docker run -d -p 8080:80 [name_image]
+
+
+65
