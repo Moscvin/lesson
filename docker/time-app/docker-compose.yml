@@ -3,22 +3,28 @@ version: "3"
 services:
   mysql:
     image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=time_db
     restart: always
   frontend:
     build: ./frontend
     ports:
-      - "3333:3000"
+      - "3000:3000"
     depends_on:
       - mysql
+    restart: always
   backend:
     build: ./api
     ports:
       - "5555:5000"
     depends_on:
       - mysql
+    restart: always
   adminer:
     image: adminer
     ports:
       - "8888:8080"
     depends_on:
       - mysql
+    restart: always
