@@ -7,24 +7,53 @@ services:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=time_db
     restart: always
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p$password"]
+      interval: 5s
+      retries: 5
+      timeout: 2s
   frontend:
     build: ./frontend
     ports:
       - "3000:3000"
+    volumes:
+      - /app/node_modules
+      - ./frontend:/app
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     restart: always
+
   backend:
     build: ./api
     ports:
       - "5555:5000"
+    volumes:
+      - /app/node_modules
+      - ./api:/app
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=time_db
+      - MYSQL_PORT='3306'
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     restart: always
+
   adminer:
     image: adminer
     ports:
       - "8888:8080"
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     restart: always
+volumes:
+  mysql_data:
