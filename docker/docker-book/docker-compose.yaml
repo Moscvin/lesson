@@ -1,7 +1,12 @@
 services:
-  app:
-    image: nginx:latest
+  task-manager:
+    build: .
     ports:
-      - "8080:80"
-    volumes:
-      - ./static-site:/usr/share/nginx/html
+      - 8080:8080
+    environment:
+      - REDIS_HOST=redis:6379
+
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
