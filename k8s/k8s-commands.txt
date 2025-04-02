@@ -1,0 +1,57 @@
+Starting Kubernetes
+1.For starting k8s in first its need to start docker (sudo sytemctl start docker),we can verify if docker is started with command sudo systemctl status docker
+2.After verify if have container minikube have container minikube,if not have its need to write command minikube start
+3.After with kubectl verify if server and client have same version (kubectl version)
+
+
+#verify status in minikube
+minikube status
+
+#kubectl version client and server
+kubectl version
+
+#verify version minikube+kubectl
+minikube kubectl version
+
+#open minikube with ssh
+minikube ssh
+
+#info about pods
+kubectl get pods
+
+
+#info about one pod
+kubectl describe pod my-nginx-pod
+
+#more information about pod
+kubectl get pods -o wide
+
+#delete one pod
+kubectl delete pod [name_of_pod]
+
+#create deployment for nginx
+k create deployment(deploy) [name_of_pod_deployment]
+
+#info about deployment
+k describe deploy [name_of_pod_deployment]
+
+#my-nginx-deploy-75488fc988-skx2r = 
+my-nginx-deploy = name_of_pod
+75488fc988 = same of replica set (indetificators)
+skx2r = id for unical pod
+
+
+#describe for unical pod
+kubectl describe pod my-nginx-deploy-75488fc988-skx2r
+
+#create pods 
+k scale deploy my-nginx-deploy --replicas=10
+
+#check what services have
+k get services
+#create service for deploy
+
+k expose deploy name_of_deploy --port=8080
+
+
+31
