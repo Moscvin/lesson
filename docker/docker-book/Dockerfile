@@ -1,5 +1,7 @@
 FROM golang:1.24.1
 
+RUN apt-get update && apt-get install -y curl
+
 WORKDIR /app
 
 COPY go.mod ./
@@ -11,4 +13,4 @@ RUN go build -o /task_manager
 
 EXPOSE 8080
 
-CMD [ "/task_manager" ]
+CMD ["/task_manager"]
