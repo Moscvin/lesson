@@ -29,7 +29,7 @@ var (
 func setupRouter() *gin.Engine {
     r := gin.Default()
 
-    r.GET("/ping3131313", func(c *gin.Context) {
+    r.GET("/ping", func(c *gin.Context) {
         if _, err := client.Ping().Result(); err != nil {
             c.JSON(http.StatusInternalServerError, gin.H{"error": "Redis connection failed"})
             return

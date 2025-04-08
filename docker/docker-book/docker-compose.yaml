@@ -1,27 +1,19 @@
-# services:
-#   task-manager:
-#     build: .
-#     ports:
-#       - 8080:8080
-#     environment:
-#       - REDIS_HOST=redis:6379
-#     healthcheck:
-#       test: ["CMD", "curl", "-f", "http://localhost:8080/ping"]
-#       interval: 20s
-#       timeout: 10s
-#       retries: 5
-#       start_period: 5s
+version: "3.8"
 
-#   redis:
-#     image: redis
-#     ports:
-#       - 6379:6379
-#   redis-populate:
-#     image: redis
-#     depends_on:
-#       - redis
-#     env_file:
-#       - ./.env.redis-populate
+volumes:
+  redis-data:
+    driver: local
+  backup: # Added the missing volume declaration
+    driver: local
+
+networks:
+  task-manager-pubic-network:
+    labels:
+      - com.packtpub.compose.app=task-manager
+  redis-network: # Added the missing network declaration
+    labels:
+      - com.packtpub.compose.app=task-manager
+
 services:
   task-manager:
     build: .
@@ -34,16 +26,30 @@ services:
         condition: service_healthy
       redis-populate:
         condition: service_completed_successfully
+    networks:
+      - task-manager-pubic-network
+      - redis-network
+    labels:
+      - com.packtpub.compose.app=task-manager
 
   redis:
     image: redis
     ports:
       - 6379:6379
+    entrypoint: ["redis-server", "/usr/local/etc/redis/redis.conf"]
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
       timeout: 3s
       retries: 5
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+      - redis-data:/data
+      - backup:/backup
+    networks:
+      - redis-network
+    labels:
+      - com.packtpub.compose.app=task-manager
 
   redis-populate:
     image: redis
@@ -57,3 +63,8 @@ services:
       - ./redis-populate.txt:/redis-populate.txt
       - ./redis-populate.sh:/redis-populate.sh
     command: ["/redis-populate.sh", "/redis-populate.txt"]
+    networks:
+      - task-manager-pubic-network
+      - redis-network
+    labels:
+      - com.packtpub.compose.app=task-manager

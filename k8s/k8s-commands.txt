@@ -54,4 +54,4 @@ k get services
 k expose deploy name_of_deploy --port=8080
 
 
-31
+38
