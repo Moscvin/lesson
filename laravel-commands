@@ -1,0 +1,20 @@
+
+php artisan make:model Car
+#create simple model with name Car
+
+php artisan make:model Post -m
+#create model with name Post and Migration
+ 
+php artisan make:model Car -mcr
+#create model , migration,controller,resource with name Car
+
+php artisan make:model Phone -mcr --api
+#create model with migration,controller,resource and api with Name Phone
+
+php artisan make:model Item -a
+#create model with all option 
+
+php artisan make:model Task -fs
+#create model with factory and seeder:
+
+
